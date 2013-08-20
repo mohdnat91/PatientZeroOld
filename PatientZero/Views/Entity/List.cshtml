@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PatientZero.Models.Entity>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<ul>
+@foreach (PatientZero.Models.Entity e in Model) {
+    <li><span>@e.Id</span><span>@e.Type</span></li>
+}
+</ul>

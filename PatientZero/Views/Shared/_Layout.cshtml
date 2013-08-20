@@ -1,0 +1,30 @@
+﻿@using PatientZero.Configuration.Navigation;
+@using System.Web.Configuration;
+@{
+    IEnumerable<NavigationLink> links = ((NavigationSection)WebConfigurationManager.GetSection("navigation")).Links.Select(element => element.ToNavigationLink());
+}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>@ViewBag.Title</title>
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Styles/style.css")" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+    <body>
+        <header>
+        </header>
+        <nav>    
+            <ul>
+                @foreach (NavigationLink link in links) {
+                    <li><span class="icon"></span><a href="@Url.Action(link.Action, link.Controller, link.Params).ToLower()" class="text">@link.DisplayName</a></li>
+                }
+            </ul>
+        </nav>
+        <div id="main">
+            @RenderBody();
+        </div>
+    </body>
+</html>
+
