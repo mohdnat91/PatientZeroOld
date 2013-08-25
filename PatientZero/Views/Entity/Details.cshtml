@@ -1,0 +1,10 @@
+﻿@using PatientZero.Models;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Id - @Model.Type - Details</h2>
+@foreach (Section s in @Model.Sections) {
+    @Html.Partial("~/Views/Section/Details.cshtml", s)
+}

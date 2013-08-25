@@ -1,4 +1,5 @@
 ﻿using PatientZero.Models;
+using PatientZero.Models.Sections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace PatientZero.Controllers
             using (EntityContext context = new EntityContext()) 
             {
                 e = context.Set<Entity>().Find(id);
+                e.Sections = e.Sections.ToList();
             }
             return View(e);
         }
@@ -43,9 +45,7 @@ namespace PatientZero.Controllers
             Entity e;
             using (EntityContext context = new EntityContext()) 
             {
-                e = new Entity { Type = type };
-                e.Sections = new List<Section>();
-                e.Sections.Add(new PatientInfoSection());
+                e = EntityManager.Instance.Instantiate(type);
                 context.Set<Entity>().Add(e);
                 context.SaveChanges();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientZero.Models.Sections;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -15,9 +16,10 @@ namespace PatientZero.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) 
         {
-            modelBuilder.Entity<Entity>();
-            modelBuilder.Entity<Section>();
-            modelBuilder.Entity<PatientInfoSection>();
+            modelBuilder.Entity<Entity>().ToTable("Entities");
+            modelBuilder.Entity<Section>().ToTable("Sections");
+            modelBuilder.Entity<PatientInfoSection>().ToTable("PatientInfo");
+            modelBuilder.Entity<RelatedPatientsSection>().ToTable("RelatedPatients");
         }
     }
 
@@ -35,14 +37,5 @@ namespace PatientZero.Models
         public long Id { get; set; }
 
         public virtual Entity Entity { get; set; }
-    }
-
-    public class PatientInfoSection : Section
-    {
-        public string Name { get; set; }
-
-        public int Age { get; set; }
-
-        public string PhoneNum { get; set; }
     }
 }
