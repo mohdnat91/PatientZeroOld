@@ -110,9 +110,11 @@
   <ItemGroup>
     <Compile Include="Configuration\Entity\EntityConfiguration.cs" />
     <Compile Include="Controllers\EntityController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Binders\SectionBinder.cs" />
     <Compile Include="Models\EntityManager.cs" />
     <Compile Include="Models\EntityModels.cs" />
     <Compile Include="Models\Sections\PatientInfoSection.cs" />
