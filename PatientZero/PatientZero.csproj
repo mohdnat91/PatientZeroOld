@@ -109,7 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\Entity\EntityConfiguration.cs" />
-    <Compile Include="Controllers\EntityController.cs" />
+    <Compile Include="Configuration\Entity\EntityDefinition.cs" />
+    <Compile Include="Configuration\Entity\Range.cs" />
+    <Compile Include="Configuration\Entity\SectionDefinition.cs" />
+    <Compile Include="Configuration\Entity\SectionReference.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,7 +149,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Entity\List.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
@@ -154,7 +158,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Entity\Details.cshtml" />
+    <Content Include="Views\Patient\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Section\Details.cshtml" />

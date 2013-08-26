@@ -13,52 +13,37 @@ namespace PatientZero.Models
 
         public static EntityManager Instance { get { return _instance.Value; } }
 
-        private Dictionary<string, List<SectionDefinition>> mapping;
+        private Dictionary<string, SectionDefinition> sections;
+        private Dictionary<string, EntityDefinition> entities;
 
-        private EntityManager() {
+        public EntityManager() 
+        {
+            sections = new Dictionary<string, SectionDefinition>();
+            entities = new Dictionary<string, EntityDefinition>();
+
             EntityManagementSection conf = (EntityManagementSection)WebConfigurationManager.GetSection("entityManagement");
 
-            mapping = new Dictionary<string, List<SectionDefinition>>();
+            sections = conf.Sections.Select(s => s.ToSectionDefinition()).ToDictionary(s => s.Name);
 
-            foreach (EntityElement entity in conf.Entities) {
-                mapping[entity.Type] = new List<SectionDefinition>();
-                mapping[entity.Type].AddRange(from s in entity.Sections join sd in conf.Sections on s.Ref equals sd.Name select new SectionDefinition(sd, s));
-            }
+            entities = conf.Entities.Select(e => e.ToEntityDefinition()).ToDictionary(e => e.Type);
         }
 
-        public Entity Instantiate(string type) {
-            type = type.ToLower();
+        public Entity InstantiateEntity(string type) 
+        {
+            EntityDefinition def = entities[type];
+
             Entity entity = new Entity { Type = type, Sections = new List<Section>() };
-            (from s in mapping[type] where s.IsInitial select s.Instantiate()).ToList().ForEach(s => entity.Sections.Add(s));
+            foreach (SectionReference section in def.Sections.Where(s => s.IsInitial)) 
+            {
+                entity.Sections.Add(InstantiateSection(section.DefinitionName));
+            }
+
             return entity;
         }
 
-        public Section InstantiateSection(string type) {
-            string t = ((EntityManagementSection)WebConfigurationManager.GetSection("entityManagement")).Sections.Single(s => s.Name == type).Type;
-            return (Section) Activator.CreateInstance(Type.GetType(t));
-        }
-
-        private class SectionDefinition
+        public Section InstantiateSection(string name)
         {
-            public string Name { get; set; }
-            public string View { get; set; }
-            public Type Type { get; set; }
-
-            public bool IsInitial { get; set; }
-
-            public int Occurs { get; set; }
-
-            public SectionDefinition(SectionDefinitionElement def, SectionElement sec) {
-                Name = def.Name;
-                View = def.View;
-                Type = Type.GetType(def.Type);
-                IsInitial = sec.IsInitial;
-                Occurs = sec.Occurs == "unlimited" ? int.MaxValue : int.Parse(sec.Occurs);
-            }
-
-            public Section Instantiate() {
-                return (Section)Activator.CreateInstance(Type);
-            }
+            return (Section)Activator.CreateInstance(sections[name].Implementation);
         }
     }
 }
