@@ -1,5 +1,6 @@
-﻿using PatientZero.Configuration.Entity;
+using PatientZero.Configuration.Entity;
 using PatientZero.Models;
+using PatientZero.Models.Binders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,8 @@ namespace PatientZero
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders[typeof(Section)] = new SectionBinder();
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EntityContext>());
         }
     }
 }

@@ -8,3 +8,5 @@
 @foreach (Section s in @Model.Sections) {
     @Html.Partial("~/Views/Section/Details.cshtml", s)
 }
+<a href="@Url.Action("Create", "Section", new { type = "patient-info" })">Save</a>
+
