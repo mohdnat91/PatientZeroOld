@@ -134,6 +134,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Flaty\flaty.js" />
+    <Content Include="Scripts\Flot\jquery.flot.crosshair.js" />
+    <Content Include="Scripts\Flot\jquery.flot.js" />
+    <Content Include="Scripts\Flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\Flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\Flot\jquery.flot.stack.js" />
+    <Content Include="Scripts\Flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\jquery-1.10.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\jquery.sparkline.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Styles\Bootstrap\bootstrap-responsive.min.css" />
+    <Content Include="Styles\Bootstrap\bootstrap.min.css" />
+    <Content Include="Styles\Flaty\flaty-responsive.css" />
+    <Content Include="Styles\Flaty\flaty.css" />
+    <Content Include="Styles\Font\font-awesome.min.css" />
+    <Content Include="Styles\Font\fontawesome-webfont.svg" />
+    <Content Include="Styles\normalize.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -170,6 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\RelatedPatientsSection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Font\fontawesome-webfont.eot" />
+    <Content Include="Styles\Font\fontawesome-webfont.ttf" />
+    <Content Include="Styles\Font\fontawesome-webfont.woff" />
+    <Content Include="Styles\Font\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

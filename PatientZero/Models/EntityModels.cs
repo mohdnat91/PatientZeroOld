@@ -36,6 +36,6 @@ namespace PatientZero.Models
     {
         public long Id { get; set; }
 
-        public virtual Entity Entity { get; set; }
+        public long EntityId { get; set; }
     }
 }

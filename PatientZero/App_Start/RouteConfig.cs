@@ -9,8 +9,15 @@ namespace PatientZero
 {
     public class RouteConfig
     {
-        public static void RegisterRoutes(RouteCollection routes) {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Patient",
+                url: "patient/{action}/{id}",
+                defaults: new { controller = "Patient", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

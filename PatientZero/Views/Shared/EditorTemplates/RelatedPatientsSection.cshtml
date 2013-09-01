@@ -1,3 +1,48 @@
 ﻿@model PatientZero.Models.Sections.RelatedPatientsSection
 
-<h1>RelatedPatients</h1>
+<div class="btn-toolbar text-center" style="margin-top: 0;">
+    <div class="btn-group">
+        <a class="btn btn-circle btn-bordered btn-fill btn-to-success show-tooltip" title="" href="#" data-original-title="Add new record"><i class="icon-plus"></i></a>
+        <a class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="#" data-original-title="Edit selected"><i class="icon-edit"></i></a>
+        <a class="btn btn-circle btn-bordered btn-fill btn-to-danger show-tooltip" title="" href="#" data-original-title="Delete selected"><i class="icon-trash"></i></a>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-circle btn-bordered btn-fill show-tooltip" title="" href="#" data-original-title="Print"><i class="icon-print"></i></a>
+        <a class="btn btn-circle btn-bordered btn-fill show-tooltip" title="" href="#" data-original-title="Export to PDF"><i class="icon-file-text-alt"></i></a>
+        <a class="btn btn-circle btn-bordered btn-fill show-tooltip" title="" href="#" data-original-title="Export to Exel"><i class="icon-table"></i></a>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-circle btn-bordered btn-fill btn-to-lime show-tooltip" title="" href="#" data-original-title="Refresh"><i class="icon-repeat"></i></a>
+    </div>
+</div>
+
+<table class="table table-advance table-hover fill-head">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-flag-green">
+            <td>1</td>
+            <td>Mohammad</td>
+            <td>AlNatsheh</td>
+            <td>mohdnat91</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Mohammad</td>
+            <td>AlKhaldi</td>
+            <td>neo</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Test</td>
+            <td>Testeron</td>
+            <td>dddd</td>
+        </tr>
+    </tbody>
+</table>

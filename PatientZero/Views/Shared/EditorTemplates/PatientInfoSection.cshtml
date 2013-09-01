@@ -1,6 +1,29 @@
 ﻿@model PatientZero.Models.Sections.PatientInfoSection
 
-<h1>Patient Info</h1>
-<p>@Model.Name</p>
-<p>@Model.Age</p>
-<p>@Model.PhoneNum</p>
+<form class="form-horizontal" action="@Url.Action("Edit", "Section")" method="post" data-async>
+    <div class="control-group">
+        <label class="control-label" style="width: 100px;">Name</label>
+        <div class="controls" style="margin-left: 110px;">
+            <input type="text" placeholder="Name" class="input-block-level" name="Name" value="@Model.Name">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" style="width: 100px;">Age</label>
+        <div class="controls" style="margin-left: 110px;">
+            <input type="text" placeholder="Age" class="input-block-level" name="Age" value="@Model.Age">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" style="width: 100px;">Mobile</label>
+        <div class="controls" style="margin-left: 110px;">
+            <input type="text" placeholder="Mobile" class="input-block-level" name="PhoneNum" value="@Model.PhoneNum">
+        </div>
+    </div>
+    <input type="hidden" name="section-type" value="patient-info" />
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="entityId" value="@Model.EntityId" />
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary"><i class="icon-ok"></i>Save</button>
+        <button type="button" class="btn">Cancel</button>
+    </div
+</form>

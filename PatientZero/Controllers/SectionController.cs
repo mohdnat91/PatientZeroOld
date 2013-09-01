@@ -10,9 +10,10 @@ namespace PatientZero.Controllers
     public class SectionController : Controller
     {
 
-        public ActionResult Create(string type)
+        public ActionResult Create(string type, long entityId)
         {
             Section section = EntityManager.Instance.InstantiateSection(type);
+            section.EntityId = entityId;
             return PartialView("Details", section);
         }
 
@@ -29,11 +30,10 @@ namespace PatientZero.Controllers
             return Json(true);
         }
 
-        public ActionResult Save(Section section)
+        public ActionResult Edit(Section section)
         {
             using (EntityContext context = new EntityContext())
             {
-                Section dbSection = context.Set<Section>().Attach(section);
                 context.Entry(section).State = System.Data.EntityState.Modified;
                 context.SaveChanges();
             }

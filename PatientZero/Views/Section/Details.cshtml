@@ -2,6 +2,15 @@
 
 @model PatientZero.Models.Section
 
-<div class="section">
-    @Html.EditorForModel()
+<div class="box">
+    <div class="box-title">
+        <h3><i class="icon-bar-chart"></i>@Model.GetType().BaseType.Name</h3>
+        <div class="box-tool">
+            <a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
+            <a data-action="close" href="#"><i class="icon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+        @Html.EditorForModel()
+    </div>
 </div>
